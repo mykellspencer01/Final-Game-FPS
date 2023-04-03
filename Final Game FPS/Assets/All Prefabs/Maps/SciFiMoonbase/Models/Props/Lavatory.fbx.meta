@@ -1,0 +1,210 @@
+fileFormatVersion: 2
+guid: 61d8f2822c176674b82136199ee73057
+timeCreated: 1440530381
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: FaucetHandle
+    100002: FaucetHandle 1
+    100004: group1
+    100006: //RootNode
+    100008: Lavatory
+    100010: Lavatory 1
+    100012: pCylinder1
+    100014: pCylinder10
+    100016: pCylinder11
+    100018: pCylinder12
+    100020: pCylinder13
+    100022: pCylinder14
+    100024: pCylinder15
+    100026: pCylinder16
+    100028: pCylinder17
+    100030: pCylinder18
+    100032: pCylinder19
+    100034: pCylinder2
+    100036: pCylinder20
+    100038: pCylinder21
+    100040: pCylinder22
+    100042: pCylinder23
+    100044: pCylinder24
+    100046: pCylinder25
+    100048: pCylinder26
+    100050: pCylinder27
+    100052: pCylinder28
+    100054: pCylinder3
+    100056: pCylinder4
+    100058: pCylinder5
+    100060: pCylinder6
+    100062: pCylinder7
+    100064: pCylinder8
+    100066: pCylinder9
+    100068: transform1
+    100070: transform10
+    100072: transform11
+    100074: transform12
+    100076: transform13
+    100078: transform14
+    100080: transform15
+    100082: transform16
+    100084: transform17
+    100086: transform18
+    100088: transform19
+    100090: transform2
+    100092: transform20
+    100094: transform21
+    100096: transform22
+    100098: transform23
+    100100: transform24
+    100102: transform25
+    100104: transform26
+    100106: transform27
+    100108: transform28
+    100110: transform29
+    100112: transform3
+    100114: transform30
+    100116: transform31
+    100118: transform4
+    100120: transform5
+    100122: transform6
+    100124: transform7
+    100126: transform8
+    100128: transform9
+    100130: Lavatory1
+    400000: FaucetHandle
+    400002: FaucetHandle 1
+    400004: group1
+    400006: //RootNode
+    400008: Lavatory
+    400010: Lavatory 1
+    400012: pCylinder1
+    400014: pCylinder10
+    400016: pCylinder11
+    400018: pCylinder12
+    400020: pCylinder13
+    400022: pCylinder14
+    400024: pCylinder15
+    400026: pCylinder16
+    400028: pCylinder17
+    400030: pCylinder18
+    400032: pCylinder19
+    400034: pCylinder2
+    400036: pCylinder20
+    400038: pCylinder21
+    400040: pCylinder22
+    400042: pCylinder23
+    400044: pCylinder24
+    400046: pCylinder25
+    400048: pCylinder26
+    400050: pCylinder27
+    400052: pCylinder28
+    400054: pCylinder3
+    400056: pCylinder4
+    400058: pCylinder5
+    400060: pCylinder6
+    400062: pCylinder7
+    400064: pCylinder8
+    400066: pCylinder9
+    400068: transform1
+    400070: transform10
+    400072: transform11
+    400074: transform12
+    400076: transform13
+    400078: transform14
+    400080: transform15
+    400082: transform16
+    400084: transform17
+    400086: transform18
+    400088: transform19
+    400090: transform2
+    400092: transform20
+    400094: transform21
+    400096: transform22
+    400098: transform23
+    400100: transform24
+    400102: transform25
+    400104: transform26
+    400106: transform27
+    400108: transform28
+    400110: transform29
+    400112: transform3
+    400114: transform30
+    400116: transform31
+    400118: transform4
+    400120: transform5
+    400122: transform6
+    400124: transform7
+    400126: transform8
+    400128: transform9
+    400130: Lavatory1
+    2300000: FaucetHandle
+    2300002: Lavatory1
+    2300004: //RootNode
+    3300000: FaucetHandle
+    3300002: Lavatory1
+    3300004: //RootNode
+    4300000: FaucetHandle
+    4300002: Lavatory1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 12
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

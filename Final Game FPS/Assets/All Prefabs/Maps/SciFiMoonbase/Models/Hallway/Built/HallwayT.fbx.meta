@@ -1,0 +1,96 @@
+fileFormatVersion: 2
+guid: 1c81b32c737de89409f0ce6f72c8177b
+timeCreated: 1440531524
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: HallwayTBend1
+    100004: HallwayTBend2
+    100006: HallwayTCeiling
+    100008: HallwayTGround
+    100010: HallwayTWall
+    400000: //RootNode
+    400002: HallwayTBend1
+    400004: HallwayTBend2
+    400006: HallwayTCeiling
+    400008: HallwayTGround
+    400010: HallwayTWall
+    2300000: HallwayTBend1
+    2300002: HallwayTBend2
+    2300004: HallwayTCeiling
+    2300006: HallwayTGround
+    2300008: HallwayTWall
+    3300000: HallwayTBend1
+    3300002: HallwayTBend2
+    3300004: HallwayTCeiling
+    3300006: HallwayTGround
+    3300008: HallwayTWall
+    4300000: HallwayTWall
+    4300002: HallwayTCeiling
+    4300004: HallwayTBend1
+    4300006: HallwayTBend2
+    4300008: HallwayTGround
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

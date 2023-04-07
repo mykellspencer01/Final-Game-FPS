@@ -10,8 +10,10 @@ public class LobbyPlayerScript : NetworkComponent
     public int Character;
     public int Team;
     public bool IsReady;
+    public string playerName;
 
     //UI elements set in Editor
+    public InputField EnterName;
     public Dropdown CharacterSelect;
     public Dropdown TeamSelect;
     public Toggle ReadyToggle;
@@ -40,10 +42,13 @@ public class LobbyPlayerScript : NetworkComponent
                         case 2://GREEN
                             MyLobbyBackground.color = new Color32(0, 255, 0, 128);
                             break;
+                        case 3://CYAN
+                            MyLobbyBackground.color = new Color32(0, 255, 255, 128);
+                            break;
                     }
                 }
                 break;
-            case "CHAR":
+            case "CHARACTER":
                 Character = int.Parse(value);
                 if (IsServer)
                 {
@@ -52,7 +57,7 @@ public class LobbyPlayerScript : NetworkComponent
                 break;
             case "READY":
                 IsReady = bool.Parse(value);
-                if (IsClient)
+                if (IsClient && !IsLocalPlayer)
                 {
                     ReadyToggle.isOn = IsReady;
                 }
@@ -64,8 +69,22 @@ public class LobbyPlayerScript : NetworkComponent
                         //Spawns Player's character
                         GameObject temp = MyCore.NetCreateObject(Character, Owner, this.transform.position - new Vector3(0, .5f, 0),
                             Quaternion.identity);
-
                     }*/
+                }
+                break;
+            case "NAME":
+                playerName = value;
+                if (IsServer)
+                {
+                    SendUpdate("NAME", value);
+                }
+                if (IsLocalPlayer && value.Length > 0)
+                {
+                    ReadyToggle.interactable = true;
+                }
+                else
+                {
+                    ReadyToggle.interactable = false;
                 }
                 break;
         }
@@ -73,7 +92,10 @@ public class LobbyPlayerScript : NetworkComponent
 
     public override void NetworkedStart()
     {
-        
+        if (IsClient)
+        {
+            ReadyToggle.interactable = false;
+        }
     }
 
     public override IEnumerator SlowUpdate()
@@ -83,23 +105,32 @@ public class LobbyPlayerScript : NetworkComponent
             ReadyToggle.interactable = false;
             TeamSelect.gameObject.SetActive(false);
             CharacterSelect.gameObject.SetActive(false);
+            EnterName.gameObject.SetActive(false);
+        }
+        try
+        {
+            this.transform.SetParent(GameObject.FindGameObjectWithTag("PlayerMenu").transform);
+        }
+        catch
+        {
+            Debug.Log("Could not find Player Menu!");
         }
         //Dirty solution just to get the point across, make sure to edit later...
-        switch (Owner)
+        /*switch (Owner)
         {
             case 0:
-                this.transform.position = new Vector3(-4, 4, 10);
+                this.transform.position = this.transform.position + new Vector3(.5f, 0, 10);
                 break;
             case 1:
-                this.transform.position = new Vector3(4, 4, 10);
+                this.transform.position = this.transform.position + new Vector3(1f, 0, 10);
                 break;
             case 2:
-                this.transform.position = new Vector3(-4, -4, 10);
+                this.transform.position = this.transform.position + new Vector3(1.5f, 0, 10);
                 break;
             case 3:
-                this.transform.position = new Vector3(4, -4, 10);
+                this.transform.position = this.transform.position + new Vector3(2f, 0, 10);
                 break;
-        }
+        }*/
         while (IsConnected)
         {
             if (IsLocalPlayer)
@@ -118,6 +149,7 @@ public class LobbyPlayerScript : NetworkComponent
                     SendUpdate("READY", IsReady.ToString());
                     SendUpdate("CHARACTER", Character.ToString());
                     SendUpdate("TEAM", Team.ToString());
+                    SendUpdate("NAME", playerName);
                     IsDirty = false;
                 }
             }
@@ -137,9 +169,16 @@ public class LobbyPlayerScript : NetworkComponent
         
     }
 
+    public void SetName(string s)
+    {
+        if (MyId != null && IsLocalPlayer)
+        { 
+            SendCommand("NAME", s);
+        }
+    }
     public void SetTeam(int t)
     {
-        if (IsLocalPlayer && MyId.IsInit)
+        if (MyId != null && IsLocalPlayer)
         {
             SendCommand("TEAM", t.ToString());
         }
@@ -147,7 +186,7 @@ public class LobbyPlayerScript : NetworkComponent
 
     public void SetCharacter(int c)
     {
-        if (IsLocalPlayer && MyId.IsInit)
+        if (MyId != null && IsLocalPlayer)
         {
             SendCommand("CHARACTER", c.ToString());
         }
@@ -155,9 +194,10 @@ public class LobbyPlayerScript : NetworkComponent
 
     public void SetReady(bool r)
     {
-        if (IsLocalPlayer && MyId.IsInit)
+        if (MyId != null && IsLocalPlayer)
         {
             SendCommand("READY", r.ToString());
         }
+        
     }
 }

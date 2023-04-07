@@ -7,7 +7,7 @@ public class GameManager : NetworkComponent
 {
     //Critical variables that must be synchronized
     public bool GameStarted;
-
+    public string pn;
     //Score
     //Player Metrics
     //Progress
@@ -16,13 +16,11 @@ public class GameManager : NetworkComponent
     public override void HandleMessage(string flag, string value)
     {
         //This will only happen client side
-        if (flag == "GAMESTART")
+        if (flag == "GAMESTART" && IsClient)
         {
+            GameStarted = bool.Parse(value);
             GameStarted = true;
-            foreach (LobbyPlayerScript lp in GameObject.FindObjectsOfType<LobbyPlayerScript>())
-            {
-                lp.transform.GetChild(0).gameObject.SetActive(false);
-            }
+            GameObject.FindGameObjectWithTag("PlayerMenu").transform.parent.gameObject.GetComponent<Canvas>().enabled = false;
         }
     }
 
@@ -59,13 +57,12 @@ public class GameManager : NetworkComponent
             SendUpdate("GAMESTART", GameStarted.ToString());
             //Stop Listening for more players
             //...Function Coming
+            //Spawn Players
             foreach (LobbyPlayerScript lp in GameObject.FindObjectsOfType<LobbyPlayerScript>())
             {
                 MyCore.NetCreateObject(lp.Character, lp.Owner, lp.transform.position -
                     new Vector3(0, .5f, 0), Quaternion.identity);
             }
-
-            //Spawn Players
         }
         while (IsServer)
         {
@@ -74,7 +71,7 @@ public class GameManager : NetworkComponent
                 SendUpdate("GAMESTART", GameStarted.ToString());
                 IsDirty = false;
             }
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
         }
     }
 

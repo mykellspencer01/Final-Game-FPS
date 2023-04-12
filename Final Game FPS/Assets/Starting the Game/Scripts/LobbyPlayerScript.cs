@@ -7,7 +7,123 @@ using NETWORK_ENGINE;
 
 public class LobbyPlayerScript : NetworkComponent
 {
-    public int Character;
+    public string PName;
+    public string PScore;
+    public bool IsReady;
+    public int ColorSelected;
+    public int CharSelected;
+
+    public override void HandleMessage(string flag, string value)
+    {
+        if (flag == "READY")
+        {
+            IsReady = bool.Parse(value);
+            if (IsServer)
+            {
+                SendUpdate("READY", value);
+            }
+        }
+
+        if (flag == "NAME")
+        {
+            PName = value;
+            if (IsServer)
+            {
+                SendUpdate("NAME", value);
+            }
+        }
+
+        if (flag == "COLOR")
+        {
+            ColorSelected = int.Parse(value);
+            if (IsServer)
+            {
+                SendUpdate("COLOR", value);
+            }
+        }
+
+        if (flag == "CHAR")
+        {
+            CharSelected = int.Parse(value);
+            if (IsServer)
+            {
+                SendUpdate("CHAR", value);
+            }
+        }
+    }
+    public void UI_Ready(bool r)
+    {
+        if (IsLocalPlayer)
+        {
+            SendCommand("READY", r.ToString());
+        }
+    }
+    public override void NetworkedStart()
+    {
+        if (!IsLocalPlayer)
+        {
+            this.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
+
+    public void UI_NameInput(string s)
+    {
+        if (IsLocalPlayer)
+        {
+            SendCommand("NAME", s);
+        }
+
+    }
+    public void UI_ColorInput(int c)
+    {
+        if (IsLocalPlayer)
+        {
+            SendCommand("COLOR", c.ToString());
+        }
+    }
+
+    public void UI_CharInput(int c)
+    {
+        if (IsLocalPlayer)
+        {
+            SendCommand("CHAR", c.ToString());
+        }
+    }
+
+
+    public override IEnumerator SlowUpdate()
+    {
+        while (IsConnected)
+        {
+
+            if (IsServer)
+            {
+
+                if (IsDirty)
+                {
+                    SendUpdate("NAME", PName);
+                    SendUpdate("COLOR", ColorSelected.ToString());
+                    SendUpdate("CHAR", CharSelected.ToString());
+
+                    IsDirty = false;
+                }
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    /*public int Character;
     public int Team;
     public bool IsReady;
     public string playerName;
@@ -64,49 +180,29 @@ public class LobbyPlayerScript : NetworkComponent
                 if (IsServer)
                 {
                     SendUpdate("READY", value);
-                   /* if (IsReady)
-                    {
-                        //Spawns Player's character
-                        GameObject temp = MyCore.NetCreateObject(Character, Owner, this.transform.position - new Vector3(0, .5f, 0),
-                            Quaternion.identity);
-                    }*/
                 }
                 break;
             case "NAME":
                 playerName = value;
+                if (playerName == "")
+                {
+                    ReadyToggle.interactable = false;
+                }
+                else
+                {
+                    ReadyToggle.interactable = true;
+                }
                 if (IsServer)
                 {
                     SendUpdate("NAME", value);
                 }
-                if (IsLocalPlayer && value.Length > 0)
-                {
-                    ReadyToggle.interactable = true;
-                }
-                else
-                {
-                    ReadyToggle.interactable = false;
-                }
+                
                 break;
         }
     }
 
     public override void NetworkedStart()
     {
-        if (IsClient)
-        {
-            ReadyToggle.interactable = false;
-        }
-    }
-
-    public override IEnumerator SlowUpdate()
-    {
-        if (!IsLocalPlayer)
-        {
-            ReadyToggle.interactable = false;
-            TeamSelect.gameObject.SetActive(false);
-            CharacterSelect.gameObject.SetActive(false);
-            EnterName.gameObject.SetActive(false);
-        }
         try
         {
             this.transform.SetParent(GameObject.FindGameObjectWithTag("PlayerMenu").transform);
@@ -115,22 +211,18 @@ public class LobbyPlayerScript : NetworkComponent
         {
             Debug.Log("Could not find Player Menu!");
         }
-        //Dirty solution just to get the point across, make sure to edit later...
-        /*switch (Owner)
+        if (!IsLocalPlayer)
         {
-            case 0:
-                this.transform.position = this.transform.position + new Vector3(.5f, 0, 10);
-                break;
-            case 1:
-                this.transform.position = this.transform.position + new Vector3(1f, 0, 10);
-                break;
-            case 2:
-                this.transform.position = this.transform.position + new Vector3(1.5f, 0, 10);
-                break;
-            case 3:
-                this.transform.position = this.transform.position + new Vector3(2f, 0, 10);
-                break;
-        }*/
+            ReadyToggle.interactable = false;
+            TeamSelect.gameObject.SetActive(false);
+            CharacterSelect.gameObject.SetActive(false);
+            EnterName.gameObject.SetActive(false);
+        }
+        ReadyToggle.interactable = false;
+    }
+
+    public override IEnumerator SlowUpdate()
+    {
         while (IsConnected)
         {
             if (IsLocalPlayer)
@@ -169,16 +261,18 @@ public class LobbyPlayerScript : NetworkComponent
         
     }
 
+    
     public void SetName(string s)
     {
-        if (MyId != null && IsLocalPlayer)
+        if (IsLocalPlayer)
         { 
             SendCommand("NAME", s);
         }
     }
+
     public void SetTeam(int t)
     {
-        if (MyId != null && IsLocalPlayer)
+        if (IsLocalPlayer)
         {
             SendCommand("TEAM", t.ToString());
         }
@@ -186,7 +280,7 @@ public class LobbyPlayerScript : NetworkComponent
 
     public void SetCharacter(int c)
     {
-        if (MyId != null && IsLocalPlayer)
+        if (IsLocalPlayer)
         {
             SendCommand("CHARACTER", c.ToString());
         }
@@ -194,10 +288,10 @@ public class LobbyPlayerScript : NetworkComponent
 
     public void SetReady(bool r)
     {
-        if (MyId != null && IsLocalPlayer)
+        if (IsLocalPlayer)
         {
             SendCommand("READY", r.ToString());
         }
         
-    }
+    }*/
 }

@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{5522670F-E00F-F0F3-8E0C-05292A47C299}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameManager/GameMaster.cs">
+    <Files>
+      <File FileName="Assets/NetworkPlayerManager/NPM.cs" Line="76" Column="37" />
+      <File FileName="Assets/PlayerCharacters/PlayerCharacter.cs" Line="55" Column="6" />
+      <File FileName="Assets/GameManager/GameMaster.cs" Line="47" Column="35" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0fc70e6f-baac-49a8-8f6c-02fac0b0f142" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

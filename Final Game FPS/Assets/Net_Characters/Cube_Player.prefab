@@ -137,6 +137,8 @@ MonoBehaviour:
   HP: 10
   playerName: 
   Team: 0
+  Character: 0
+  userName: {fileID: 5000692035556023637}
 --- !u!1001 &2114716715495139361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,3 +253,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2579910925078473896, guid: 4708906ce169e4ddb8b8eee1cbcebd15, type: 3}
   m_PrefabInstance: {fileID: 2114716715495139361}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5000692035556023637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6358798241145435508, guid: 4708906ce169e4ddb8b8eee1cbcebd15, type: 3}
+  m_PrefabInstance: {fileID: 2114716715495139361}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

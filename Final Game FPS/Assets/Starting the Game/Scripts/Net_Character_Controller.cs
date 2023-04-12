@@ -2,29 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NETWORK_ENGINE;
+using UnityEngine.UI;
 
 public class Net_Character_Controller : NetworkComponent
 {
     //This will be your network player controller
     public int HP = 10;
-    public string playerName;
+    public string PName = "<default>";
     // ...etc.
 
     //Does not have to be synchronized because it will be set to the owner's synchronized value.
     public int Team;
     public int Character;
+    public Text userName;
 
     public override void HandleMessage(string flag, string value)
     {
-        if (IsClient && flag == "NAME")
-        {
-            playerName = value;
-        }
+        
     }
 
     public override void NetworkedStart()
     {
-        
+        foreach(LobbyPlayerScript lp in GameObject.FindObjectsOfType<LobbyPlayerScript>())
+        {
+            if (lp.Owner == this.Owner)
+            {
+                PName = (string)lp.playerName.Clone();
+                userName.text = PName;
+            }
+        }
     }
 
     public override IEnumerator SlowUpdate()
@@ -60,7 +66,7 @@ public class Net_Character_Controller : NetworkComponent
         {
             if (IsDirty)
             {
-                SendUpdate("NAME", playerName);
+               
             }
             yield return new WaitForSeconds(.1f);
         }
